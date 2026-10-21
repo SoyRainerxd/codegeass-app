@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!--
+  Code Geass Fan App
+  Autor: Rainer Cruz — ITLA, matrícula 2025-0061
+-->
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#0b0712">
+  <title>Code Geass</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main id="app">
+
+    <!-- PORTADA -->
+    <section id="view-portada" class="view active">
+      <div class="slider" id="slider">
+        <div class="slides" id="slides">
+          <article class="slide s1">
+            <div class="glyph">♚</div>
+            <p class="kicker">Anime · Sunrise · 2006</p>
+            <h1>CODE<br>GEASS</h1>
+            <p class="tag">Lelouch of the Rebellion</p>
+          </article>
+          <article class="slide s2">
+            <div class="glyph">♞</div>
+            <p class="kicker">2 temporadas · 50 episodios</p>
+            <h2>R1 &amp; R2</h2>
+            <p class="tag">Una guerra jugada como una partida de ajedrez.</p>
+          </article>
+          <article class="slide s3">
+            <div class="glyph">♟</div>
+            <p class="kicker">Un príncipe exiliado</p>
+            <h2>Un poder.<br>Un imperio.<br>Una rebelión.</h2>
+            <p class="tag">Toca <b>Personajes</b> para conocer a los protagonistas.</p>
+          </article>
+        </div>
+        <div class="dots" id="dots"></div>
+      </div>
+      <div class="cover-actions">
+        <button class="btn primary" data-go="personajes">Conocer personajes</button>
+        <button class="btn" data-go="juego">Jugar</button>
+      </div>
+    </section>
+
+    <!-- PERSONAJES -->
+    <section id="view-personajes" class="view">
+      <header class="page-head"><h2>Personajes</h2><p>Toca uno para ver su ficha.</p></header>
+      <div class="grid" id="char-list"></div>
+    </section>
+
+    <!-- MOMENTOS -->
+    <section id="view-momentos" class="view">
+      <header class="page-head"><h2>Momentos</h2><p>Mis tres escenas favoritas.</p></header>
+      <div class="moments" id="moment-list"></div>
+    </section>
+
+    <!-- ACERCA DE -->
+    <section id="view-acerca" class="view">
+      <header class="page-head"><h2>Acerca de</h2></header>
+      <div class="card about">
+        <h3>Code Geass: Hangyaku no Lelouch</h3>
+        <p class="muted">コードギアス 反逆のルルーシュ</p>
+        <dl id="about-list"></dl>
+        <p id="about-premise"></p>
+      </div>
+    </section>
+
+    <!-- JUEGA CONMIGO -->
+    <section id="view-juego" class="view">
+      <header class="page-head"><h2>Jaque al Imperio</h2><p>Llega a la ★ antes de que los caballos te alcancen.</p></header>
+      <div class="hud">
+        <div><span>Nivel</span><b id="g-level">1</b></div>
+        <div><span>Capturas</span><b id="g-caps">0</b></div>
+        <div><span>Récord</span><b id="g-best">0</b></div>
+      </div>
+      <div id="board" class="board" aria-label="Tablero"></div>
+      <p id="g-msg" class="g-msg">Tu rey ♚ se mueve 1 casilla en cualquier dirección. Entra a un ♞ para capturarlo.</p>
+      <div class="g-actions">
+        <button class="btn primary" id="g-geass">⚡ Orden absoluta (1)</button>
+        <button class="btn" id="g-restart">Reiniciar</button>
+      </div>
+      <details class="how">
+        <summary>¿Cómo se juega?</summary>
+        <ul>
+          <li>Toca una casilla resaltada para mover tu rey ♚.</li>
+          <li>Después de cada movimiento, los caballos ♞ saltan en “L” hacia ti.</li>
+          <li>Si un caballo cae sobre ti, pierdes. Si tú entras a su casilla, lo capturas.</li>
+          <li>Los peones ♟ bloquean el paso.</li>
+          <li><b>Orden absoluta:</b> congela a todos los caballos durante 2 turnos. Una vez por nivel.</li>
+        </ul>
+      </details>
+    </section>
+
+    <!-- CONTRÁTAME -->
+    <section id="view-contrato" class="view">
+      <header class="page-head"><h2>Contrátame</h2><p>¿Te gustó la app? Hablemos.</p></header>
+      <div class="card hire">
+        <img class="avatar" src="img/rainer_600.jpg" alt="Foto de Rainer Cruz">
+        <h3>Rainer Cruz</h3>
+        <p class="muted">Desarrollador de software · Estudiante de ITLA</p>
+        <p class="muted small">Matrícula 2025-0061</p>
+        <div class="contact">
+          <a class="btn primary" href="mailto:rainercruzdelarosa@gmail.com">✉ rainercruzdelarosa@gmail.com</a>
+          <a class="btn" href="tel:+18295635112">📞 829-563-5112</a>
+          <a class="btn" href="https://wa.me/18295635112">💬 WhatsApp</a>
+          <a class="btn" href="https://github.com/SoyRainerxd">⌥ github.com/SoyRainerxd</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal de detalle (personaje / momento) -->
+  <div id="modal" class="modal" hidden>
+    <div class="sheet">
+      <button class="close" id="modal-close" aria-label="Cerrar">✕</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <nav class="tabs" id="tabs">
+    <button data-go="portada" class="active"><i>⌂</i><span>Portada</span></button>
+    <button data-go="personajes"><i>☻</i><span>Personajes</span></button>
+    <button data-go="momentos"><i>▶</i><span>Momentos</span></button>
+    <button data-go="acerca"><i>ℹ</i><span>Acerca</span></button>
+    <button data-go="juego"><i>♞</i><span>Juega</span></button>
+    <button data-go="contrato"><i>✉</i><span>Contrato</span></button>
+  </nav>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
