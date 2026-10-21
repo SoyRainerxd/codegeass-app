@@ -1,0 +1,11 @@
+{
+  "appId": "com.rainercruz.codegeass",
+  "appName": "Code Geass Fan",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": false
+  }
+}
